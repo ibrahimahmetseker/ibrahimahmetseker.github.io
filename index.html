@@ -2,45 +2,65 @@
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
-    <title>Benim İlk GitHub Sayfam</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            color: #333;
-        }
-        p {
-            color: #666;
-        }
-        button {
-            padding: 10px 20px;
-            background-color: #24292e;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #444;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ana Sayfa</title>
 </head>
 <body>
 
-    <h1>Merhaba Dünya 🌍</h1>
-    <p>Bu sayfa GitHub reposuna eklediğim ilk HTML dosyasıdır.</p>
+    <!-- HEADER -->
+    <header>
+        <h1>İbrahim Ahmet Şeker</h1>
+        <p>Bilgisayar Mühendisliği Öğrencisi | Geleceğin Yazılım Geliştiricisi</p>
+    </header>
 
-    <button onclick="mesajGoster()">Bana Tıkla</button>
+    <!-- NAVIGATION -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Ana Sayfa</a></li>
+            <li><a href="hakkimda.html">Hakkımda</a></li>
+            <li><a href="ilgi-alanlarim.html">İlgi Alanlarım</a></li>
+            <li><a href="iletisim.html">İletişim</a></li>
+        </ul>
+    </nav>
 
-    <script>
-        function mesajGoster() {
-            alert("GitHub + HTML çalışıyor 🚀");
-        }
-    </script>
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <section>
+            <p><strong>Hoş geldiniz!</strong> Kişisel web siteme hoş geldiniz. 
+            Ben İbrahim Ahmet Şeker, 3. sınıf Bilgisayar Mühendisliği öğrencisiyim. 
+            Yazılım geliştirme alanında kendimi geliştirmeye devam ediyorum.</p>
+        </section>
+
+        <section>
+            <h2>Hakkımda Kısa Bilgi</h2>
+            <p>Teknolojiye ve programlamaya ilgi duyuyorum. 
+            Yeni yazılım teknolojilerini öğrenmek ve projeler geliştirmek en büyük hedeflerim arasında.</p>
+        </section>
+
+        <section>
+            <h2 id="hedef">Hedeflerim</h2>
+            <p>Alanımda uzman bir yazılım geliştirici olmak ve başarılı projelere imza atmak istiyorum.</p>
+        </section>
+
+        <section>
+            <h2>İlgi Alanlarım</h2>
+            <p>Futbol oynamayı ve takip etmeyi severim. Spor ve teknoloji hayatımın önemli bir parçasıdır.</p>
+        </section>
+
+        <section>
+            <h2>Hızlı Bağlantılar</h2>
+            <ul>
+                <li><a href="#hedef">Hedeflerim Bölümüne Git</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2026 İbrahim Ahmet Şeker | Tüm Hakları Saklıdır.</p>
+    </footer>
 
 </body>
 </html>
