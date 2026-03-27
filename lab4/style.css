@@ -13,8 +13,8 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    max-width: 1200px; /* Sayfanın aşırı yayılmasını engeller */
-    margin: 0 auto;    /* Sayfayı yatayda ortalar */
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .navbar {
@@ -87,7 +87,6 @@ body {
     padding: 20px 40px;
     background-color: #f4f5f7;
     border-bottom: 2px solid #ddd;
-    overflow-y: auto;
 }
 
 .card {
