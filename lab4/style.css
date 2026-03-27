@@ -13,6 +13,8 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+    max-width: 1200px; /* Sayfanın aşırı yayılmasını engeller */
+    margin: 0 auto;    /* Sayfayı yatayda ortalar */
 }
 
 .navbar {
