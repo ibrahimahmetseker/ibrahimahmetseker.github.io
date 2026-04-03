@@ -4,27 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CSS Position Etkileşimli Duyuru Kartı</title>
-    <!-- CSS Dosyasını Bağlama -->
+    <!-- Harici CSS dosyamızı bağlıyoruz -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Başlık Alanı -->
+    <!-- Kısa Başlık Alanı -->
     <header>
         <a href="index.html" class="back-link">Ana Sayfaya Dön</a>
     </header>
 
-    <!-- Ana İçerik ve Duyuru Kartı -->
+    <!-- Ana Duyuru Kartı Kapsayıcısı[cite: 2] -->
     <main>
+        <!-- Kapsayıcı (Zorunlu kural: Position: Relative)[cite: 2] -->
         <div class="card-container">
             
-            <!-- Z-index kullanımı için üst üste binen dekoratif şekil -->
-            <div class="decorative-circle"></div>
+            <!-- Taşan öğeleri gizlemek için kullandığımız alt katman -->
+            <div class="card-background">
+                <!-- @keyframes animasyonlu ve z-index kullanılan dekoratif şekil[cite: 2] -->
+                <div class="decorative-circle"></div>
+            </div>
 
-            <!-- Absolute konumlandırılmış bilgi etiketleri -->
+            <!-- Kart içinde Position: Absolute ile konumlandırılmış en az 3 öğe[cite: 2] -->
             <div class="badge-free">Ücretsiz</div>
             <div class="badge-date">24 Nisan</div>
+            <div class="badge-location">Konum: Konferans Salonu</div>
+            <div class="badge-register">Son Kayıt</div>
             
+            <!-- Kart İçeriği -->
             <div class="card-content">
                 <h2 class="card-title">Teknoloji Topluluğu Etkinliği</h2>
                 <p class="card-desc">
@@ -35,16 +42,13 @@
                 </p>
             </div>
 
-            <div class="badge-location">Konum: Konferans Salonu</div>
-            <div class="badge-register">Son Kayıt</div>
-
         </div>
     </main>
 
-    <!-- Scroll sırasında sabit duran öğe -->
+    <!-- Scroll sırasında sabit duran öğe (Zorunlu kural: Position: Fixed)[cite: 2] -->
     <div class="fixed-helper">Yardımcı Menü</div>
 
-    <!-- Alt bilgi -->
+    <!-- Basit Alt Bilgi Alanı (Footer)[cite: 2] -->
     <footer>
         2026-LAB Position Örnek Çalışması
     </footer>
