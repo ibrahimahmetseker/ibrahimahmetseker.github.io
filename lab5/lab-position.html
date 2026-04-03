@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Position Etkileşimli Duyuru Kartı</title>
+    <!-- CSS Dosyasını Bağlama -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+    <!-- Başlık Alanı -->
+    <header>
+        <a href="index.html" class="back-link">Ana Sayfaya Dön</a>
+    </header>
+
+    <!-- Ana İçerik ve Duyuru Kartı -->
+    <main>
+        <div class="card-container">
+            
+            <!-- Z-index kullanımı için üst üste binen dekoratif şekil -->
+            <div class="decorative-circle"></div>
+
+            <!-- Absolute konumlandırılmış bilgi etiketleri -->
+            <div class="badge-free">Ücretsiz</div>
+            <div class="badge-date">24 Nisan</div>
+            
+            <div class="card-content">
+                <h2 class="card-title">Teknoloji Topluluğu Etkinliği</h2>
+                <p class="card-desc">
+                    Bu örnek sayfada amaç; CSS position özelliklerini<br>
+                    kullanarak tek bir duyuru kartı üzerinde relative, absolute,<br>
+                    fixed, z-index, hover, cursor ve animasyon mantığını<br>
+                    birlikte göstermektir.
+                </p>
+            </div>
+
+            <div class="badge-location">Konum: Konferans Salonu</div>
+            <div class="badge-register">Son Kayıt</div>
+
+        </div>
+    </main>
+
+    <!-- Scroll sırasında sabit duran öğe -->
+    <div class="fixed-helper">Yardımcı Menü</div>
+
+    <!-- Alt bilgi -->
+    <footer>
+        2026-LAB Position Örnek Çalışması
+    </footer>
+
+</body>
+</html>
