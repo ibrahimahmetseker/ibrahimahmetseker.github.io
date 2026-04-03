@@ -12,177 +12,204 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
-    padding-bottom: 60px; /* Footer için ayrılan boşluk */
+    position: relative;
+    /* Hocanın "fixed" öğeyi test edebilmesi için sayfaya bilerek uzunluk veriyoruz[cite: 2] */
+    min-height: 150vh; 
+    padding-bottom: 80px; 
 }
 
-/* Kısa Başlık Alanı */
+/* ----------------------------------------------------- */
+/* HEADER VE FOOTER ALANLARI                             */
+/* ----------------------------------------------------- */
+
+/* Kısa Başlık Alanı[cite: 2] */
 header {
     width: 100%;
-    padding: 15px 30px;
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 20px 40px;
+    background-color: #f0f2f5; 
     text-align: left;
 }
 
-/* 1. Hover ve Cursor Etkileşimi (Ana Sayfaya Dön Linki) */
+/* Basit alt bilgi alanı (Footer)[cite: 2] */
+footer {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    background-color: transparent;
+    color: #888;
+    position: absolute;
+    bottom: 0;
+    font-size: 14px;
+}
+
+/* ----------------------------------------------------- */
+/* 1. ETKİLEŞİM: Hover durumunda cursor değişen alan[cite: 2] */
+/* ----------------------------------------------------- */
 .back-link {
     text-decoration: none;
-    color: #4a148c;
+    color: #3a0ca3;
     font-weight: bold;
-    cursor: pointer; 
-    transition: color 0.3s ease; 
+    cursor: pointer; /* İstenen kural: Cursor değişimi[cite: 2] */
+    transition: color 0.3s ease; /* İstenen kural: CSS geçişi (transition)[cite: 2] */
 }
 
 .back-link:hover {
-    color: #7b1fa2;
+    color: #7209b7;
 }
 
-/* Ana Duyuru Kartı Kapsayıcısı (Position: Relative Zorunluluğu) */
+/* ----------------------------------------------------- */
+/* ANA KART KAPSAYICISI (Zorunlu Kural: Position: relative)[cite: 2] */
+/* ----------------------------------------------------- */
 .card-container {
     position: relative; 
-    width: 600px;
+    width: 650px;
     max-width: 90%;
-    margin: 60px auto;
-    background: linear-gradient(135deg, #e6e6ff 0%, #dcd3ff 100%);
-    border-radius: 12px;
-    padding: 50px 30px 40px 30px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    overflow: hidden;
+    margin: 80px auto; 
 }
 
-/* Dekoratif Arka Plan (Position: Absolute ve @keyframes animasyonu) */
+/* Kartın arka planını ve taşan animasyonunu yönetecek zemin katmanı */
+.card-background {
+    position: absolute;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: linear-gradient(135deg, #e8e6ff 0%, #ded6ff 100%);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+    overflow: hidden; 
+    z-index: 0;
+}
+
+/* ----------------------------------------------------- */
+/* 2. ETKİLEŞİM: @keyframes ile basit animasyon[cite: 2]      */
+/* ----------------------------------------------------- */
 .decorative-circle {
     position: absolute;
-    right: -50px;
-    bottom: -50px;
-    width: 250px;
-    height: 250px;
+    right: -60px;
+    bottom: -60px;
+    width: 320px;
+    height: 320px;
     background-color: rgba(255, 255, 255, 0.4);
     border-radius: 50%;
-    z-index: 1; /* Üst üste binme hiyerarşisi */
-    animation: pulse 3s infinite alternate; 
+    /* Zorunlu kural: Üst üste binen öğelerde z-index kullanımı[cite: 2] */
+    z-index: 1; 
+    animation: pulse 4s infinite alternate ease-in-out; 
 }
 
 @keyframes pulse {
     0% { transform: scale(1); }
-    100% { transform: scale(1.1); }
+    100% { transform: scale(1.15); }
 }
 
-/* Kart İçeriği (z-index ile dekoratif şeklin üstünde kalması sağlanır) */
+/* İçeriklerin üstte kalması için z-index ayarı[cite: 2] */
 .card-content {
     position: relative;
     z-index: 2; 
+    padding: 60px 40px 80px 40px; 
 }
 
 .card-title {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #222;
-    max-width: 80%;
+    font-size: 26px;
+    margin-bottom: 25px;
+    color: #111;
 }
 
 .card-desc {
     font-size: 16px;
-    line-height: 1.6;
-    color: #444;
-    max-width: 80%;
+    line-height: 1.8;
+    color: #333;
+    max-width: 85%;
 }
 
-/* Position: Absolute ile yerleştirilmiş küçük bilgi etiketleri (En az 3 Adet Kuralı) */
+/* ----------------------------------------------------- */
+/* POSITION: ABSOLUTE İLE YERLEŞTİRİLMİŞ ROZETLER (En az 3)[cite: 2] */
+/* ----------------------------------------------------- */
 
+/* Sol üstten dışarı taşan Sarı Rozet */
 .badge-free {
     position: absolute; 
-    top: 20px;
-    left: -10px;
-    background-color: #fff3e0;
+    top: -20px;
+    left: -15px;
+    background-color: #fff5ba;
     color: #000;
-    padding: 5px 15px;
-    font-weight: bold;
-    border-radius: 0 8px 8px 0;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    padding: 10px 20px;
+    font-weight: 600;
+    border-radius: 10px 10px 10px 0; 
+    box-shadow: -2px 4px 8px rgba(0,0,0,0.1);
     z-index: 3;
 }
 
+/* Sağ üst köşedeki Yeşil Rozet */
 .badge-date {
     position: absolute; 
     top: 20px;
     right: 20px;
     background-color: #e8f5e9;
     color: #000;
-    padding: 5px 15px;
+    padding: 8px 16px;
     border-radius: 8px;
-    font-weight: bold;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    font-weight: 600;
     z-index: 3;
 }
 
-/* 2. Hover ve Cursor Etkileşimi (Konum Rozeti) */
+/* Sağ ortadan dışarı taşan, etkileşimli Konum Rozeti */
 .badge-location {
     position: absolute; 
-    bottom: 60px;
-    right: 30px;
+    top: 60%;
+    right: -45px; 
+    transform: translateY(-50%); 
     background-color: #fff;
-    color: #333;
-    padding: 10px 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    color: #222;
+    padding: 15px 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     z-index: 3;
-    cursor: pointer; 
+    cursor: pointer; /* İkinci cursor değişen alan[cite: 2] */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .badge-location:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+    transform: translateY(-50%) scale(1.05); 
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
 }
 
+/* Sağ alttaki Turuncu/Pembe Rozet */
 .badge-register {
     position: absolute; 
     bottom: 20px;
     right: 20px;
     background-color: #ffebee;
     color: #000;
-    padding: 5px 15px;
+    padding: 8px 18px;
     border-radius: 8px;
-    font-weight: bold;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    font-weight: 600;
     z-index: 3;
 }
 
-/* Sabit (Fixed) Yardımcı Öğe */
-/* 3. Hover, Cursor ve :active Etkileşimi */
+/* ----------------------------------------------------- */
+/* POSITION: FIXED ÖĞE (Scroll sırasında sabit kalır)[cite: 2] */
+/* ----------------------------------------------------- */
 .fixed-helper {
     position: fixed; 
-    bottom: 25px;
-    right: 25px;
+    bottom: 30px;
+    right: 30px;
     background-color: #e0e0e0;
-    color: #333;
+    color: #111;
     padding: 12px 24px;
     border-radius: 8px;
     font-weight: bold;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    cursor: pointer; 
-    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    cursor: pointer; /* Üçüncü cursor değişen alan[cite: 2] */
+    transition: background-color 0.2s ease, transform 0.1s ease;
     z-index: 100;
 }
 
 .fixed-helper:hover {
-    background-color: #d5d5d5;
+    background-color: #d1d1d1;
 }
 
+/* 3. ETKİLEŞİM: :active efekti[cite: 2] */
 .fixed-helper:active {
-    transform: scale(0.95); /* :active efekti */
-}
-
-/* Basit Alt Bilgi Alanı (Footer) */
-footer {
-    width: 100%;
-    text-align: center;
-    padding: 15px;
-    background-color: transparent;
-    color: #777;
-    position: absolute;
-    bottom: 0;
-    font-size: 14px;
+    transform: scale(0.95); 
 }
