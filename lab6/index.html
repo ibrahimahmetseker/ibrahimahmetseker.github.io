@@ -103,7 +103,7 @@
         document.getElementById('resLetter').innerText = letter;
         
         const statusEl = document.getElementById('resStatus');
-        statusEl.innerText = isPassed ? "Geçti [cite: 9]" : "Kaldı";
+        statusEl.innerText = isPassed ? "Geçti " : "Kaldı";
         statusEl.className = "status-pill " + (isPassed ? "pass" : "fail");
 
         document.getElementById('gradeResult').style.display = 'block';
