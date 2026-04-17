@@ -1,1 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Programlama Uygulamaları</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<div class="page-wrapper">
+    <section class="app-container">
+        <header class="app-header">
+            <h2>Öğrenci Not Hesaplama</h2>
+        </header>
+        
+        <div class="form-body">
+            <div class="input-field">
+                <label for="studentName">Ad Soyad</label>
+                <input type="text" id="studentName" placeholder="Örn: Filiz Akın [cite: 5]">
+            </div>
+            
+            <div class="input-row">
+                <div class="input-field">
+                    <label for="midterm">Vize Notu (%40)</label>
+                    <input type="number" id="midterm" min="0" max="100">
+                </div>
+                <div class="input-field">
+                    <label for="finalExam">Final Notu (%60)</label>
+                    <input type="number" id="finalExam" min="0" max="100">
+                </div>
+            </div>
+            
+            <button class="btn btn-grade" onclick="calculateGrade()">Hesapla [cite: 10]</button>
+            
+            <div id="gradeResult" class="result-display">
+                <h3 id="resName"></h3>
+                <p>Ortalama: <strong id="resAvg"></strong></p>
+                <p>Harf Notu: <strong id="resLetter"></strong></p>
+                <p>Durum: <span id="resStatus" class="status-pill"></span></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="app-container">
+        <header class="app-header">
+            <h2>Birim Dönüştürücü [cite: 13]</h2>
+        </header>
+        
+        <div class="form-body">
+            <div class="input-field">
+                <label for="unitValue">Değer Giriniz [cite: 14]</label>
+                <input type="number" id="unitValue" placeholder="Örn: 50 [cite: 15]">
+            </div>
+            
+            <div class="input-field">
+                <label for="conversionType">Dönüşüm Tipi [cite: 16]</label>
+                <select id="conversionType">
+                    <option value="m-km">Metre -> Kilometre [cite: 18]</option>
+                    <option value="c-f">Celsius -> Fahrenheit [cite: 17]</option>
+                    <option value="kg-gr">Kilogram -> Gram [cite: 21]</option>
+                </select>
+            </div>
+            
+            <button class="btn btn-unit" onclick="convertUnits()">Dönüştür [cite: 28]</button>
+            
+            <div id="unitResult" class="result-display unit-res">
+                </div>
+        </div>
+    </section>
+</div>
+
+<script>
+    // --- Not Hesaplama Fonksiyonu ---
+    function calculateGrade() {
+        const name = document.getElementById('studentName').value;
+        const vize = parseFloat(document.getElementById('midterm').value);
+        const final = parseFloat(document.getElementById('finalExam').value);
+
+        if (!name || isNaN(vize) || isNaN(final)) {
+            alert("Lütfen tüm alanları doldurunuz.");
+            return;
+        }
+
+        // Ortalama: vize %40, final %60 [cite: 2]
+        const avg = (vize * 0.4) + (final * 0.6);
+        let letter = "";
+        
+        // Örnekteki 60 = CB skalasına göre [cite: 9]
+        if (avg >= 90) letter = "AA";
+        else if (avg >= 80) letter = "BA";
+        else if (avg >= 70) letter = "BB";
+        else if (avg >= 60) letter = "CB";
+        else if (avg >= 50) letter = "CC";
+        else if (avg >= 45) letter = "DC";
+        else if (avg >= 40) letter = "DD";
+        else letter = "FF";
+
+        const isPassed = avg >= 50; // Durum >= 50 ise geçti [cite: 2]
+        
+        document.getElementById('resName').innerText = name;
+        document.getElementById('resAvg').innerText = avg.toFixed(2);
+        document.getElementById('resLetter').innerText = letter;
+        
+        const statusEl = document.getElementById('resStatus');
+        statusEl.innerText = isPassed ? "Geçti [cite: 9]" : "Kaldı";
+        statusEl.className = "status-pill " + (isPassed ? "pass" : "fail");
+
+        document.getElementById('gradeResult').style.display = 'block';
+    }
+
+    // --- Birim Dönüştürücü Fonksiyonu ---
+    function convertUnits() {
+        const val = parseFloat(document.getElementById('unitValue').value);
+        const type = document.getElementById('conversionType').value;
+        const resBox = document.getElementById('unitResult');
+        let result = 0;
+
+        if (isNaN(val)) {
+            alert("Lütfen bir değer giriniz.");
+            return;
+        }
+
+        switch(type) {
+            case "m-km": result = val / 1000; break;
+            case "c-f": result = (val * 1.8) + 32; break; // Örn: 50C -> 122F [cite: 22]
+            case "kg-gr": result = val * 1000; break; // Örn: 50kg -> 50.000gr [cite: 29]
+        }
+
+        resBox.innerHTML = `Sonuç: <strong>${result.toLocaleString('tr-TR')}</strong>`;
+        resBox.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
