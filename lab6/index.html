@@ -44,25 +44,25 @@
 
     <section class="app-container">
         <header class="app-header">
-            <h2>Birim Dönüştürücü [cite: 13]</h2>
+            <h2>Birim Dönüştürücü </h2>
         </header>
         
         <div class="form-body">
             <div class="input-field">
-                <label for="unitValue">Değer Giriniz [cite: 14]</label>
-                <input type="number" id="unitValue" placeholder="Örn: 50 [cite: 15]">
+                <label for="unitValue">Değer Giriniz </label>
+                <input type="number" id="unitValue" placeholder="Örn: 50 ">
             </div>
             
             <div class="input-field">
-                <label for="conversionType">Dönüşüm Tipi [cite: 16]</label>
+                <label for="conversionType">Dönüşüm Tipi </label>
                 <select id="conversionType">
-                    <option value="m-km">Metre -> Kilometre [cite: 18]</option>
-                    <option value="c-f">Celsius -> Fahrenheit [cite: 17]</option>
-                    <option value="kg-gr">Kilogram -> Gram [cite: 21]</option>
+                    <option value="m-km">Metre -> Kilometre </option>
+                    <option value="c-f">Celsius -> Fahrenheit </option>
+                    <option value="kg-gr">Kilogram -> Gram </option>
                 </select>
             </div>
             
-            <button class="btn btn-unit" onclick="convertUnits()">Dönüştür [cite: 28]</button>
+            <button class="btn btn-unit" onclick="convertUnits()">Dönüştür </button>
             
             <div id="unitResult" class="result-display unit-res">
                 </div>
@@ -82,11 +82,11 @@
             return;
         }
 
-        // Ortalama: vize %40, final %60 [cite: 2]
+        // Ortalama: vize %40, final %60 
         const avg = (vize * 0.4) + (final * 0.6);
         let letter = "";
         
-        // Örnekteki 60 = CB skalasına göre [cite: 9]
+        // Örnekteki 60 = CB skalasına göre 
         if (avg >= 90) letter = "AA";
         else if (avg >= 80) letter = "BA";
         else if (avg >= 70) letter = "BB";
@@ -96,7 +96,7 @@
         else if (avg >= 40) letter = "DD";
         else letter = "FF";
 
-        const isPassed = avg >= 50; // Durum >= 50 ise geçti [cite: 2]
+        const isPassed = avg >= 50; // Durum >= 50 ise geçti 
         
         document.getElementById('resName').innerText = name;
         document.getElementById('resAvg').innerText = avg.toFixed(2);
@@ -123,8 +123,8 @@
 
         switch(type) {
             case "m-km": result = val / 1000; break;
-            case "c-f": result = (val * 1.8) + 32; break; // Örn: 50C -> 122F [cite: 22]
-            case "kg-gr": result = val * 1000; break; // Örn: 50kg -> 50.000gr [cite: 29]
+            case "c-f": result = (val * 1.8) + 32; break; // Örn: 50C -> 122F 
+            case "kg-gr": result = val * 1000; break; // Örn: 50kg -> 50.000gr 
         }
 
         resBox.innerHTML = `Sonuç: <strong>${result.toLocaleString('tr-TR')}</strong>`;
