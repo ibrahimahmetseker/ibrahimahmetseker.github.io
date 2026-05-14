@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>İletişim - Detaylı Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>CSS Temel Ödevi</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Ana Sayfa</a></li>
+                <li><a href="#">Hakkında</a></li>
+                <li><a href="#">Hizmetler</a></li>
+                <li><a class="active" href="iletisim.html">İletişim</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contact-container">
+        <h2 style="text-align: center; margin-bottom: 25px;">Detaylı İletişim Formu</h2>
+        <form action="#">
+            <label for="fullname">Ad Soyad:</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Örn: ibrahim Ahmet Şeker">
+
+            <label for="email">E-posta Adresi:</label>
+            <input type="email" id="email" name="email" placeholder="ornek@mail.com">
+
+            <label for="password">Başvuru Takip Şifresi:</label>
+            <input type="password" id="password" name="password" placeholder="Şifrenizi girin">
+
+            <label>İletişim Tercihi:</label>
+            <div class="selection-box">
+                <input type="radio" id="mail-pref" name="pref" value="email" checked>
+                <label for="mail-pref" class="inline-label">Bana e-posta ile ulaşın</label><br>
+                <input type="radio" id="phone-pref" name="pref" value="phone">
+                <label for="phone-pref" class="inline-label">Bana telefonla ulaşın</label>
+            </div>
+
+            <label>İlgi Alanları / Yetenekler:</label>
+            <div class="selection-box">
+                <input type="checkbox" id="html" name="skill" value="html">
+                <label for="html" class="inline-label">HTML</label><br>
+                <input type="checkbox" id="css" name="skill" value="css">
+                <label for="css" class="inline-label">CSS</label><br>
+                <input type="checkbox" id="algo" name="skill" value="algo">
+                <label for="algo" class="inline-label">Algoritma</label>
+            </div>
+
+            <label for="subject">Konu:</label>
+            <select id="subject" name="subject">
+                <option value="" disabled selected>Lütfen bir konu seçin...</option>
+                <option value="is-teklifi">İş Teklifi</option>
+                <option value="soru">Soru</option>
+                <option value="geri-bildirim">Geri Bildirim</option>
+            </select>
+
+            <label for="file">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
+            <input type="file" id="file" name="file">
+
+            <label for="message">Mesajınız:</label>
+            <textarea id="message" name="message" rows="5" placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."></textarea>
+
+            <div class="button-row">
+                <button type="submit" class="btn-submit">Gönder</button>
+                <button type="reset" class="btn-reset">Temizle</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        <p>© 2026 CSS Temel Örnek. Bu sayfa basit bir HTML+CSS çalışmasıdır.</p>
+    </footer>
+</div>
+
+</body>
+</html>
+
