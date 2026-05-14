@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hafta 7 – Etkinlik Kayıt | Web Programlama</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Özel CSS -->
+  <link href="styles/hafta7.css" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       NAVBAR
+  ════════════════════════════════════════ -->
+  <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Web<em>Prog</em></a>
+
+      <button class="navbar-toggler border-0" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navMenu"
+              aria-controls="navMenu" aria-expanded="false"
+              aria-label="Menüyü aç/kapat">
+        <span class="navbar-toggler-icon" style="filter:invert(1)"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3 gap-1">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Ana Sayfa</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#etkinlikler">Etkinlikler</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#kayit">Kayıt</a>
+          </li>
+        </ul>
+        <!-- Tema butonu (desktop) -->
+        <button id="temaBtn" class="d-none d-lg-inline-flex">◑ Koyu Tema</button>
+        <!-- Tema butonu (mobil – collapse içinde) -->
+        <button id="temaBtnMob" class="btn-submit d-lg-none mt-3" style="width:auto;padding:.5rem 1.25rem;font-size:.8rem;">
+          ◑ Koyu Tema
+        </button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════ -->
+  <section class="hero-section">
+    <div class="hero-blob"></div>
+    <div class="container position-relative">
+      <div class="row align-items-center g-5">
+
+        <!-- Sol: Metin -->
+        <div class="col-lg-7">
+          <div class="hero-eyebrow">Bootstrap + JavaScript · Hafta 7</div>
+          <h1 class="hero-title fade-up">
+            Etkinliklere<br>
+            <em>Kayıt Ol,</em><br>
+            Deneyimi Yaşa
+          </h1>
+          <p class="hero-lead fade-up delay-1">
+            Bu sayfa Bootstrap bileşenleri ve saf JavaScript ile geliştirildi.
+            Aşağıdaki kartlardan ilgini çeken etkinliği seç, formu doldur ve
+            başvurunu tamamla.
+          </p>
+          <div class="d-flex flex-wrap gap-3 fade-up delay-2">
+            <a href="#kayit" class="btn-primary-custom">
+              Hemen Kayıt Ol →
+            </a>
+            <a href="#etkinlikler" class="btn-outline-custom">
+              Etkinlikleri Gör
+            </a>
+          </div>
+
+          <div class="hero-stats fade-up delay-3">
+            <div class="stat-item">
+              <span class="stat-num">3</span>
+              <span class="stat-label">Etkinlik</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">120+</span>
+              <span class="stat-label">Katılımcı</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">%100</span>
+              <span class="stat-label">Ücretsiz</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sağ: Bilgi kartı -->
+        <div class="col-lg-5 fade-up delay-4">
+          <div class="info-strip">
+            <div class="info-item mb-4">
+              <div class="info-icon">📅</div>
+              <div>
+                <div class="info-label">Etkinlik Tarihi</div>
+                <div class="info-value">15 – 22 Mayıs 2026</div>
+              </div>
+            </div>
+            <div class="info-item mb-4">
+              <div class="info-icon">📍</div>
+              <div>
+                <div class="info-label">Konum</div>
+                <div class="info-value">Üniversite Teknoloji Merkezi</div>
+              </div>
+            </div>
+            <div class="info-item mb-4">
+              <div class="info-icon">🎟</div>
+              <div>
+                <div class="info-label">Ücret</div>
+                <div class="info-value">Ücretsiz • Kayıt Gerekli</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">⏰</div>
+              <div>
+                <div class="info-label">Son Başvuru</div>
+                <div class="info-value">14 Mayıs 2026</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       ETKİNLİK KARTLARI
+  ════════════════════════════════════════ -->
+  <section id="etkinlikler" class="py-6" style="padding:5rem 0;">
+    <div class="container">
+
+      <!-- Başlık -->
+      <div class="mb-5">
+        <p class="section-label">Etkinlikler</p>
+        <h2 class="section-title">Öne Çıkan Programlar</h2>
+        <p class="section-lead">
+          Her etkinlik farklı bir beceri setine odaklanıyor. Aşağıdan ilgini çekeni seç
+          ve kayıt formunda belirt.
+        </p>
+      </div>
+
+      <!-- Bootstrap Grid – 3 Kart -->
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+        <!-- Kart 1 -->
+        <div class="col">
+          <div class="etkinlik-card">
+            <div class="card-img-placeholder" style="background:linear-gradient(135deg,#1d3557,#457b9d);">
+              🌐
+            </div>
+            <div class="card-body d-flex flex-column p-4">
+              <div class="card-meta">
+                <span class="card-tag tag-blue">Workshop</span>
+                <span class="card-date">15 May 2026</span>
+              </div>
+              <h3 class="card-title-el">Responsive Web Tasarımı</h3>
+              <p class="card-text-el">
+                Bootstrap grid sistemi, breakpoint'ler ve modern CSS ile
+                mobil-önce tasarım prensiplerini uygulayacağız.
+              </p>
+              <div class="mt-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="capacity-label">Kapasite</span>
+                  <span class="capacity-label">28/40</span>
+                </div>
+                <div class="capacity-bar">
+                  <div class="capacity-fill bg-primary"
+                       data-width="70%" style="width:0;background:#457b9d!important;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer-el">
+              <span style="font-size:.78rem;color:var(--muted);">⏱ 3 saat</span>
+              <a href="#kayit" class="btn-card">Kayıt Ol</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 2 -->
+        <div class="col">
+          <div class="etkinlik-card">
+            <div class="card-img-placeholder" style="background:linear-gradient(135deg,#6b0f1a,#e63946);">
+              ⚡
+            </div>
+            <div class="card-body d-flex flex-column p-4">
+              <div class="card-meta">
+                <span class="card-tag tag-red">Hackathon</span>
+                <span class="card-date">18 May 2026</span>
+              </div>
+              <h3 class="card-title-el">JavaScript DOM Sprint</h3>
+              <p class="card-text-el">
+                24 saatlik yarışmada katılımcılar gerçek kullanıcı problemlerini
+                saf JavaScript ile çözecek. Takım başı 3-4 kişi.
+              </p>
+              <div class="mt-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="capacity-label">Kapasite</span>
+                  <span class="capacity-label">36/50</span>
+                </div>
+                <div class="capacity-bar">
+                  <div class="capacity-fill"
+                       data-width="72%" style="width:0;background:var(--accent)!important;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer-el">
+              <span style="font-size:.78rem;color:var(--muted);">⏱ 24 saat</span>
+              <a href="#kayit" class="btn-card">Kayıt Ol</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kart 3 -->
+        <div class="col">
+          <div class="etkinlik-card">
+            <div class="card-img-placeholder" style="background:linear-gradient(135deg,#1b4332,#2d6a4f);">
+              🎓
+            </div>
+            <div class="card-body d-flex flex-column p-4">
+              <div class="card-meta">
+                <span class="card-tag tag-green">Seminer</span>
+                <span class="card-date">22 May 2026</span>
+              </div>
+              <h3 class="card-title-el">GitHub Pages ile Yayın</h3>
+              <p class="card-text-el">
+                Projelerini GitHub üzerinde yayınlamayı, versiyon kontrolünü
+                ve CI/CD temellerini öğreneceksin.
+              </p>
+              <div class="mt-3">
+                <div class="d-flex justify-content-between mb-1">
+                  <span class="capacity-label">Kapasite</span>
+                  <span class="capacity-label">12/30</span>
+                </div>
+                <div class="capacity-bar">
+                  <div class="capacity-fill"
+                       data-width="40%" style="width:0;background:var(--green)!important;"></div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer-el">
+              <span style="font-size:.78rem;color:var(--muted);">⏱ 2 saat</span>
+              <a href="#kayit" class="btn-card">Kayıt Ol</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /row -->
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       KAYIT FORMU
+  ════════════════════════════════════════ -->
+  <section id="kayit" class="form-section py-5" style="padding:5rem 0 !important;">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8">
+
+          <!-- Form wrapper -->
+          <div class="form-wrapper">
+
+            <div class="form-header">
+              <h3>Etkinlik Kayıt Formu</h3>
+              <p>Aşağıdaki tüm zorunlu alanları doldurun. Eksik alanlar varsa uyarı alacaksınız.</p>
+            </div>
+
+            <div class="form-body">
+
+              <!-- Uyarı Alanı -->
+              <div id="uyariAlani" class="d-none mb-4"></div>
+
+              <form id="kayitFormu" novalidate>
+
+                <!-- Ad Soyad + E-posta -->
+                <div class="row g-3 mb-3">
+                  <div class="col-md-6">
+                    <label for="adSoyad" class="form-label">Ad Soyad *</label>
+                    <input type="text" class="form-control" id="adSoyad"
+                           placeholder="Adın Soyadın" />
+                  </div>
+                  <div class="col-md-6">
+                    <label for="email" class="form-label">E-posta *</label>
+                    <input type="email" class="form-control" id="email"
+                           placeholder="ornek@email.com" />
+                  </div>
+                </div>
+
+                <!-- Telefon -->
+                <div class="mb-3">
+                  <label for="telefon" class="form-label">Telefon <span style="color:var(--muted);font-size:.75rem;">(opsiyonel)</span></label>
+                  <input type="tel" class="form-control" id="telefon"
+                         placeholder="05xx xxx xx xx" />
+                </div>
+
+                <!-- Etkinlik Seçimi -->
+                <div class="mb-3">
+                  <label for="etkinlik" class="form-label">Etkinlik *</label>
+                  <select class="form-select" id="etkinlik">
+                    <option value="">— Bir etkinlik seçin —</option>
+                    <option value="Responsive Web Tasarımı (15 May)">Responsive Web Tasarımı (15 May)</option>
+                    <option value="JavaScript DOM Sprint (18 May)">JavaScript DOM Sprint (18 May)</option>
+                    <option value="GitHub Pages ile Yayın (22 May)">GitHub Pages ile Yayın (22 May)</option>
+                  </select>
+                </div>
+
+                <!-- Katılım Türü -->
+                <div class="mb-3">
+                  <label for="katilimTuru" class="form-label">Katılım Türü *</label>
+                  <select class="form-select" id="katilimTuru">
+                    <option value="">— Seçin —</option>
+                    <option value="Yüz Yüze">Yüz Yüze</option>
+                    <option value="Çevrimiçi (Canlı)">Çevrimiçi (Canlı)</option>
+                    <option value="Kayıt İzleme">Kayıt İzleme</option>
+                  </select>
+                </div>
+
+                <!-- Deneyim Seviyesi -->
+                <div class="mb-3">
+                  <label for="deneyim" class="form-label">Deneyim Seviyesi *</label>
+                  <select class="form-select" id="deneyim">
+                    <option value="">— Seçin —</option>
+                    <option value="Başlangıç">Başlangıç</option>
+                    <option value="Orta">Orta</option>
+                    <option value="İleri">İleri</option>
+                  </select>
+                </div>
+
+                <!-- Notlar -->
+                <div class="mb-4">
+                  <label for="notlar" class="form-label">Özel Notlar <span style="color:var(--muted);font-size:.75rem;">(opsiyonel)</span></label>
+                  <textarea class="form-control" id="notlar" rows="3"
+                            placeholder="Diyet kısıtlaması, engel durumu veya başka notlarınızı yazın…"></textarea>
+                </div>
+
+                <!-- KVKK Onayı -->
+                <div class="mb-4 form-check">
+                  <input type="checkbox" class="form-check-input" id="kvkk" />
+                  <label class="form-check-label" for="kvkk">
+                    <a href="#" style="color:var(--accent);">KVKK aydınlatma metnini</a>
+                    okudum ve kişisel verilerimin işlenmesine onay veriyorum. *
+                  </label>
+                </div>
+
+                <!-- Gönder -->
+                <button type="submit" class="btn-submit">
+                  Başvuruyu Gönder →
+                </button>
+
+              </form>
+
+              <!-- Sonuç Alanı -->
+              <div id="sonucAlani" class="mt-4"></div>
+
+            </div><!-- /form-body -->
+          </div><!-- /form-wrapper -->
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="row align-items-center g-3">
+        <div class="col-md-6">
+          <div class="footer-brand">Web<em>Prog</em></div>
+          <p class="mt-1 mb-0" style="font-size:.8rem;">
+            7. Hafta Laboratuvar Uygulaması — Bootstrap 5 + JavaScript
+          </p>
+        </div>
+        <div class="col-md-6 text-md-end">
+          <a href="index.html" style="color:rgba(255,255,255,.5);font-size:.85rem;">
+            ← Ana Sayfaya Dön
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Özel JS -->
+  <script src="scripts/hafta7.js"></script>
+</body>
+</html>
