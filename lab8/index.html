@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Azure Web Sitesi Ödevi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ── */
+    :root {
+      --azure:   #0078d4;
+      --azure-dk:#005a9e;
+      --azure-lt:#e8f1fb;
+      --ink:     #1a1a2e;
+      --muted:   #6b7280;
+      --paper:   #f8f9fc;
+      --surface: #ffffff;
+      --border:  #e5e7eb;
+      --green:   #107c10;
+      --ff-h:    'Syne', sans-serif;
+      --ff-b:    'DM Sans', sans-serif;
+      --r:       10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--ff-b);
+      background: var(--paper);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--azure);
+      padding: .6rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .topbar-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--ff-h);
+      font-weight: 700;
+      font-size: 1rem;
+      color: #fff;
+    }
+    .azure-icon {
+      width: 28px; height: 28px;
+      background: #fff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .9rem;
+    }
+    .topbar-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,.2);
+      color: #fff;
+      font-size: .7rem;
+      font-family: var(--ff-h);
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 12px;
+      border-radius: 20px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(135deg, var(--azure-dk) 0%, var(--azure) 60%, #40a9ff 100%);
+      color: #fff;
+      padding: 5rem 2rem 6rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        -55deg,
+        transparent, transparent 25px,
+        rgba(255,255,255,.03) 25px, rgba(255,255,255,.03) 26px
+      );
+    }
+    .hero-cloud {
+      font-size: 3.5rem;
+      margin-bottom: 1.25rem;
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    .hero-eyebrow {
+      font-family: var(--ff-h);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.65);
+      margin-bottom: .75rem;
+    }
+    .hero h1 {
+      font-family: var(--ff-h);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+    .hero h1 span { color: #a8d8ff; }
+    .hero-sub {
+      font-size: 1rem;
+      color: rgba(255,255,255,.7);
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 860px;
+      margin: -3rem auto 0;
+      padding: 0 1.5rem 5rem;
+      position: relative;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      box-shadow: 0 4px 24px rgba(0,0,0,.06);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      animation: slideUp .5s ease forwards;
+      opacity: 0;
+    }
+    @keyframes slideUp {
+      from { opacity:0; transform: translateY(20px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .card:nth-child(1) { animation-delay: .1s; }
+    .card:nth-child(2) { animation-delay: .2s; }
+    .card:nth-child(3) { animation-delay: .3s; }
+
+    .card-header {
+      background: var(--azure-lt);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+    .card-header-icon {
+      width: 36px; height: 36px;
+      background: var(--azure);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .card-header h2 {
+      font-family: var(--ff-h);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--azure-dk);
+    }
+    .card-body { padding: 1.75rem 1.5rem; }
+
+    /* ── PROFILE TABLE ── */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .profile-item {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+    }
+    .profile-label {
+      font-family: var(--ff-h);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .3rem;
+    }
+    .profile-value {
+      font-family: var(--ff-h);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .profile-item.full { grid-column: 1 / -1; }
+
+    /* ── ABOUT ── */
+    .about-text {
+      font-size: .95rem;
+      line-height: 1.8;
+      color: var(--ink);
+    }
+    .about-text p + p { margin-top: .75rem; }
+
+    /* ── AZURE INFO ── */
+    .azure-steps { list-style: none; }
+    .azure-steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: .85rem 0;
+      border-bottom: 1px solid var(--border);
+      font-size: .9rem;
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    .azure-steps li:last-child { border-bottom: none; }
+    .step-num {
+      width: 28px; height: 28px;
+      background: var(--azure);
+      color: #fff;
+      font-family: var(--ff-h);
+      font-weight: 700;
+      font-size: .75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── STATUS BADGE ── */
+    .status-bar {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: #f0faf0;
+      border: 1px solid #b7e0b7;
+      border-radius: 8px;
+      padding: .85rem 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .status-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--green);
+      flex-shrink: 0;
+      box-shadow: 0 0 0 3px rgba(16,124,16,.2);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%,100% { box-shadow: 0 0 0 3px rgba(16,124,16,.2); }
+      50%      { box-shadow: 0 0 0 6px rgba(16,124,16,.08); }
+    }
+    .status-text {
+      font-family: var(--ff-h);
+      font-size: .85rem;
+      font-weight: 700;
+      color: var(--green);
+    }
+    .status-url {
+      margin-left: auto;
+      font-size: .78rem;
+      color: var(--muted);
+      font-family: monospace;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,.4);
+      text-align: center;
+      padding: 1.75rem 1rem;
+      font-size: .8rem;
+    }
+    footer span { color: var(--azure); font-family: var(--ff-h); font-weight: 700; }
+
+    @media (max-width: 600px) {
+      .profile-grid { grid-template-columns: 1fr; }
+      .profile-item.full { grid-column: 1; }
+      .status-url { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-logo">
+      <div class="azure-icon">☁</div>
+      Microsoft Azure
+    </div>
+    <span class="topbar-badge">Web Programlama Ödevi</span>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-cloud">☁</div>
+    <div class="hero-eyebrow">Microsoft Azure · Static Website</div>
+    <h1>Azure Web Sitesi <span>Ödevi</span></h1>
+    <p class="hero-sub">
+      Bu sayfa Microsoft Azure Storage üzerinde Static Website özelliği
+      kullanılarak yayınlanmıştır. Bilgisayar Mühendisliği Web Programlama dersi kapsamında hazırlanmıştır.
+    </p>
+  </section>
+
+  <!-- MAIN -->
+  <main>
+
+    <!-- Kart 1: Öğrenci Bilgileri -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">👤</div>
+        <h2>Öğrenci Bilgileri</h2>
+      </div>
+      <div class="card-body">
+        <div class="profile-grid">
+
+          <div class="profile-item">
+            <div class="profile-label">Ad Soyad</div>
+            <div class="profile-value">İbrahim Ahmet Şeker</div>
+          </div>
+
+          <div class="profile-item">
+            <div class="profile-label">Öğrenci Numarası</div>
+            <div class="profile-value">170423012</div>
+          </div>
+
+          <div class="profile-item">
+            <div class="profile-label">Bölüm</div>
+            <div class="profile-value">Bilgisayar Mühendisliği</div>
+          </div>
+
+          <div class="profile-item">
+            <div class="profile-label">Ders</div>
+            <div class="profile-value">Web Programlama</div>
+          </div>
+
+          <div class="profile-item full">
+            <div class="profile-label">Kullanılan Azure Servisi</div>
+            <div class="profile-value">Azure Storage – Static Website Hosting</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Kart 2: Tanıtım Yazısı -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">📝</div>
+        <h2>Kısa Tanıtım</h2>
+      </div>
+      <div class="card-body">
+        <div class="about-text">
+          <p>
+            Merhaba, ben İbrahim Ahmet Şeker. Bilgisayar Mühendisliği öğrencisiyim.
+            Yazılım ve web teknolojilerine ilgi duyuyorum, bu alanda kendimi geliştirmeye çalışıyorum.
+          </p>
+          <p>
+            Bu sayfayı Web Programlama dersi kapsamında Microsoft Azure üzerinde yayınladım.
+            Daha önce sadece GitHub Pages kullanmıştım; Azure ile çalışmak bulut altyapısının
+            nasıl işlediğini daha iyi anlamamı sağladı.
+          </p>
+          <p>
+            İleride back-end ve bulut teknolojileri üzerine daha fazla proje geliştirmeyi planlıyorum.
+          </p>
+        </div>
+
+        <div class="status-bar">
+          <div class="status-dot"></div>
+          <span class="status-text">Aktif · Azure Static Website üzerinde yayınlanıyor</span>
+          <span class="status-url">*.web.core.windows.net</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kart 3: İlgi Alanları -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-header-icon">💻</div>
+        <h2>İlgi Alanları & Teknolojiler</h2>
+      </div>
+      <div class="card-body">
+        <ol class="azure-steps">
+          <li>
+            <div class="step-num">1</div>
+            <div><strong>Web Geliştirme</strong> — HTML, CSS, JavaScript ve Bootstrap ile arayüz tasarımı yapıyorum.</div>
+          </li>
+          <li>
+            <div class="step-num">2</div>
+            <div><strong>Bulut Teknolojileri</strong> — Microsoft Azure üzerinde web uygulaması yayınlamayı öğrendim.</div>
+          </li>
+          <li>
+            <div class="step-num">3</div>
+            <div><strong>Versiyon Kontrol</strong> — Git ve GitHub ile proje yönetimi ve GitHub Pages üzerinde yayınlama.</div>
+          </li>
+          <li>
+            <div class="step-num">4</div>
+            <div><strong>Programlama</strong> — C, Java ve Python dillerinde temel düzeyde çalışmalar yapıyorum.</div>
+          </li>
+        </ol>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>Microsoft Azure</span> · Static Website Hosting ·
+    Web Programlama Dersi &nbsp;|&nbsp; Bilgisayar Mühendisliği
+  </footer>
+
+</body>
+</html>
