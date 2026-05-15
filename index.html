@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab Çalışmaları — İbrahim Ahmet Şeker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      color: #1a1a1a;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* HEADER */
+    header {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .name {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #888;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: #888;
+    }
+
+    /* LAB LIST */
+    .lab-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .lab-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.1rem 1.2rem;
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .lab-item:hover {
+      border-color: #bbb;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .lab-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .lab-num {
+      font-size: 0.72rem;
+      font-weight: 500;
+      color: #aaa;
+      width: 36px;
+    }
+
+    .lab-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .lab-arrow {
+      color: #ccc;
+      font-size: 1rem;
+      transition: color 0.15s, transform 0.15s;
+    }
+
+    .lab-item:hover .lab-arrow {
+      color: #555;
+      transform: translateX(3px);
+    }
+
+    /* FOOTER */
+    footer {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid #e5e5e5;
+      font-size: 0.8rem;
+      color: #aaa;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    footer a {
+      color: #aaa;
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    footer a:hover { color: #555; }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header>
+      <p class="name">İbrahim Ahmet Şeker</p>
+      <h1>Lab Çalışmaları</h1>
+      <p class="meta">Web Programlama &nbsp;·&nbsp; 2025–2026 Bahar Dönemi</p>
+    </header>
+
+    <div class="lab-list">
+      <a class="lab-item" href="lab1/index.html">
+        <div class="lab-left">
+          <span class="lab-num">01</span>
+          <span class="lab-title">Lab 1</span>
+        </div>
+        <span class="lab-arrow">→</span>
+      </a>
+      <a class="lab-item" href="lab2/index.html">
+        <div class="lab-left">
+          <span class="lab-num">02</span>
+          <span class="lab-title">Lab 2</span>
+        </div>
+        <span class="lab-arrow">→</span>
+      </a>
+      <a class="lab-item" href="lab3/index.html">
+        <div class="lab-left">
+          <span class="lab-num">03</span>
+          <span class="lab-title">Lab 3</span>
+        </div>
+        <span class="lab-arrow">→</span>
+      </a>
+      <a class="lab-item" href="lab4/index.html">
+        <div class="lab-left">
+          <span class="lab-num">04</span>
+          <span class="lab-title">Lab 4</span>
+        </div>
+        <span class="lab-arrow">→</span>
+      </a>
+      <a class="lab-item" href="lab5/index.html">
+        <div class="lab-left">
+          <span class="lab-num">05</span>
+          <span class="lab-title">Lab 5</span>
+        </div>
+        <span class="lab-arrow">→</span>
+      </a>
+      <a class="lab-item" href="lab6/index.html">
+        <div class="lab-left">
+          <span class="lab-num">06</span>
+          <span class="lab-title">Lab 6</span>
+        </div>
+        <span class="lab-arrow">→</span>
+      </a>
+      <a class="lab-item" href="lab7/index.html">
+        <div class="lab-left">
+          <span class="lab-num">07</span>
+          <span class="lab-title">Lab 7</span>
+        </div>
+        <span class="lab-arrow">→</span>
+      </a>
+      <a class="lab-item" href="lab8/index.html">
+        <div class="lab-left">
+          <span class="lab-num">08</span>
+          <span class="lab-title">Lab 8</span>
+        </div>
+        <span class="lab-arrow">→</span>
+      </a>
+    </div>
+
+    <footer>
+      <span>ibrahimahmetseker.github.io</span>
+      <a href="https://github.com/ibrahimahmetseker" target="_blank" rel="noopener">GitHub →</a>
+    </footer>
+
+  </div>
+</body>
+</html>
